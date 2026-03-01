@@ -1,0 +1,177 @@
+{
+  "student_metadata": {
+    "name": "vaiditya",
+    "roll_number": "230086",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part A",
+    "submission_date": "2026-03-01"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Keith (Local AI Agent)",
+      "model": "Gemini 3.0 Flash",
+      "provider": "Google (Local Execution via Keith Daemon)"
+    }
+  ],
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "date": "2026-03-01",
+      "tool_name": "Keith",
+      "model": "Gemini 3.0 Flash",
+      "purpose": "Initial Paper Feasibility Check",
+      "prompt": "Check if 'A Simple Geometric Interpretation of SVM using Stochastic Adversaries' (Livni et al., 2012) fits the CORE A* and 2009-2012 constraints.",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Confirmed the paper is from AISTATS 2012, which is a CORE A* venue, making it eligible for Part A.",
+      "student_verification": "Cross-referenced with the CORE 2010 portal link provided in the guidelines.",
+      "confidence_level": 5
+    },
+    {
+      "interaction_id": 2,
+      "date": "2026-03-01",
+      "tool_name": "Keith",
+      "model": "Gemini 3.0 Flash",
+      "purpose": "Deep Technical Analysis",
+      "prompt": "Is the stochastic adversary's constraint E[x_tilde] = x too restrictive for real-world sensor noise, or does it capture the essence of zero-mean Gaussian jitter?",
+      "llm_response_used": "Partially",
+      "how_it_helped": "Helped me realize that the expectation constraint ensures the adversary doesn't just shift the entire distribution, but focuses on the 'spread' or variance.",
+      "student_verification": "Checked Section 2 (Problem Formulation) where they discuss Borel probability measures.",
+      "confidence_level": 5
+    },
+    {
+      "interaction_id": 3,
+      "date": "2026-03-01",
+      "tool_name": "Keith",
+      "model": "Gemini 3.0 Flash",
+      "purpose": "Multiclass Regularization Logic",
+      "prompt": "How does the (l2)_infinity norm specifically prevent the 'dominant class' problem in multiclass SVM compared to standard Frobenius regularization?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Clarified that (l2)_infinity penalizes the maximum weight vector length across classes, ensuring no single class overpowers the decision boundary.",
+      "student_verification": "Read Theorem 3.1 and the discussion in Section 3.1.",
+      "confidence_level": 8
+    },
+    {
+      "interaction_id": 4,
+      "date": "2026-03-01",
+      "tool_name": "Keith",
+      "model": "Gemini 3.0 Flash",
+      "purpose": "Theoretical Edge Case Analysis",
+      "prompt": "Can we derive the dual of RSVM2 if the adversary uses a non-Borel measure? Does the minimax theorem still hold?",
+      "llm_response_used": "No",
+      "how_it_helped": "Keith pointed out that the paper assumes Borel measures for tractability and that non-Borel cases might break the dual upper bound logic in Eq 5.",
+      "student_verification": "Verified the 'mild conditions' mentioned in Section 3 of the paper.",
+      "confidence_level": 6
+    },
+    {
+      "interaction_id": 5,
+      "date": "2026-03-01",
+      "tool_name": "Keith",
+      "model": "Gemini 3.0 Flash",
+      "purpose": "Optimization Strategy",
+      "prompt": "How does the Composite Mirror Descent (COMID) handle the non-smoothness of the (l2)_infinity regularizer during large-scale training?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Explained that COMID uses a proximal operator for the max-norm, which allows for efficient updates even without a smooth gradient.",
+      "student_verification": "Referenced the Duchi et al. (2010) citation in the paper's bibliography.",
+      "confidence_level": 9
+    },
+    {
+      "interaction_id": 6,
+      "date": "2026-03-01",
+      "tool_name": "Keith",
+      "model": "Gemini 3.0 Flash",
+      "purpose": "Geometric Intuition",
+      "prompt": "Explain the geometric intuition of the sigma parameter in terms of the 'noise ball' radius. Is it a hard boundary or a soft variance limit?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Clarified that sigma is an expected distance constraint, making it a soft 'average' radius rather than a hard deterministic ball.",
+      "student_verification": "Compared Section 2 (Stochastic) with Section 4 (Deterministic) of the paper.",
+      "confidence_level": 7
+    },
+    {
+      "interaction_id": 7,
+      "date": "2026-03-01",
+      "tool_name": "Keith",
+      "model": "Gemini 3.0 Flash",
+      "purpose": "Heuristic Feasibility",
+      "prompt": "Is the nearest neighbor heuristic for sigma biased by outliers in the training set? Should I use a trimmed mean instead?",
+      "llm_response_used": "Partially",
+      "how_it_helped": "Suggested that while outliers affect it, the 1/n scaling in Section 5 helps stabilize the heuristic for standard datasets.",
+      "student_verification": "Analyzed the heuristic formula provided in the Experiments section.",
+      "confidence_level": 7
+    },
+    {
+      "interaction_id": 8,
+      "date": "2026-03-01",
+      "tool_name": "Keith",
+      "model": "Gemini 3.0 Flash",
+      "purpose": "Dual Norm Generalization",
+      "prompt": "If I change the adversary's noise to an l-infinity norm, why does the regularizer become l1? Walk me through the dual norm logic.",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Confirmed Theorem 3.2 which states that the regularization norm is always the dual of the perturbation norm.",
+      "student_verification": "Verified using the Cauchy-Schwarz inequality logic mentioned in the proof of Theorem 3.1.",
+      "confidence_level": 8
+    },
+    {
+      "interaction_id": 9,
+      "date": "2026-03-01",
+      "tool_name": "Keith",
+      "model": "Gemini 3.0 Flash",
+      "purpose": "Reproducibility Check",
+      "prompt": "Can I implement the RSVM2(sigma) objective using only standard scikit-learn components, or do I need a custom CVX solver?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Keith suggested that while the paper uses CVX, I can use Subgradient Descent or COMID for a standard laptop-friendly implementation.",
+      "student_verification": "Checked the 'Reproducibility' section of the exam guidelines.",
+      "confidence_level": 6
+    },
+    {
+      "interaction_id": 10,
+      "date": "2026-03-01",
+      "tool_name": "Keith",
+      "model": "Gemini 3.0 Flash",
+      "purpose": "Comparative Robustness",
+      "prompt": "Compare the robustness of RSVM2 against deterministic adversaries like those in Xu et al. (2009). Which one is more 'pessimistic'?",
+      "llm_response_used": "Yes",
+      "how_it_helped": "Learned that deterministic adversaries are more 'pessimistic' as they pick the worst-case point, while stochastic ones are more 'natural'.",
+      "student_verification": "Read the Related Work section (Section 4) of the paper.",
+      "confidence_level": 7
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "rank": 1,
+      "interaction_id": 1,
+      "prompt": "Check if 'A Simple Geometric Interpretation of SVM using Stochastic Adversaries' (Livni et al., 2012) fits the CORE A* and 2009-2012 constraints.",
+      "why_important": "This was the fundamental gatekeeper prompt that ensured the paper met all mandatory exam constraints before I committed to it."
+    },
+    {
+      "rank": 2,
+      "interaction_id": 3,
+      "prompt": "How does the (l2)_infinity norm specifically prevent the 'dominant class' problem in multiclass SVM compared to standard Frobenius regularization?",
+      "why_important": "This helped me understand the primary technical contribution of the paper (the novel multiclass regularizer) which is crucial for Part B."
+    },
+    {
+      "rank": 3,
+      "interaction_id": 8,
+      "prompt": "If I change the adversary's noise to an l-infinity norm, why does the regularizer become l1? Walk me through the dual norm logic.",
+      "why_important": "This prompt clarified the generalizability of the framework (Theorem 3.2), which is a high-probability topic for the Part C proctored exam."
+    },
+    {
+      "rank": 4,
+      "interaction_id": 6,
+      "prompt": "Explain the geometric intuition of the sigma parameter in terms of the 'noise ball' radius. Is it a hard boundary or a soft variance limit?",
+      "why_important": "Understanding the 'why' behind the parameter sigma is essential for justifying design choices in the proctored explanation phase."
+    },
+    {
+      "rank": 5,
+      "interaction_id": 9,
+      "prompt": "Can I implement the RSVM2(sigma) objective using only standard scikit-learn components, or do I need a custom CVX solver?",
+      "why_important": "This addressed the 'Compute Feasibility' constraint, ensuring I could actually reproduce the results on my laptop for Part B."
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for Part A.",
+    "understanding_acknowledged": true,
+    "signature": "vaiditya",
+    "date": "2026-03-01"
+  }
+}
