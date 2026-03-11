@@ -1,0 +1,62 @@
+{
+  "student_metadata": {
+    "name": "Vaiditya Tanwar",
+    "roll_number": "230086",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "submission_date": "2026-03-11"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Keith (Local AI Agent)",
+      "model": "Claude Opus 4",
+      "provider": "Anthropic (via GitHub Copilot, local execution)"
+    }
+  ],
+  "task": "Task 3.2 — Failure Mode Analysis",
+  "total_interactions": 2,
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "task_tag": "Task 3.2",
+      "prompt": "I want to show that the RSVM2 method fails on nonlinear data because of the linear classifier assumption I identified in Task 1.2. What's a good synthetic dataset for this?",
+      "response_summary": "The AI confirmed that make_circles (concentric rings) is an ideal choice — the data is perfectly separable by a nonlinear boundary but no linear hyperplane can separate the classes. It also mentioned make_moons as an alternative, but noted make_circles is cleaner because the failure is absolute (0% possible improvement with linear methods) rather than partial.",
+      "purpose": "Designing failure experiment",
+      "what_it_helped_with": "Confirmed make_circles is perfect — concentric rings that are perfectly separable but not by any hyperplane",
+      "code_used_verbatim": false,
+      "confidence_in_understanding": 5,
+      "verification_method": "This directly tests Assumption 3 (linear classifiers) from my Task 1.2 analysis"
+    },
+    {
+      "interaction_id": 2,
+      "task_tag": "Task 3.2",
+      "prompt": "Help me create a decision boundary visualization showing three models side by side — my RSVM2, linear SVM, and RBF SVM — on the circles dataset",
+      "response_summary": "The AI provided a matplotlib visualization using meshgrid to create a grid of points, predict class labels across the grid with each model, and use contourf to plot the decision regions. It used three subplots side by side with sklearn's SVC predict method.",
+      "purpose": "Decision boundary plot",
+      "what_it_helped_with": "Got the matplotlib meshgrid visualization template",
+      "code_used_verbatim": true,
+      "student_modification": "Used the meshgrid + contourf approach from the AI but rewrote the prediction function to work with my W matrix format instead of sklearn's API, changed colors and layout",
+      "confidence_in_understanding": 2,
+      "verification_method": "Standard decision boundary visualization — I adapted it to my specific models"
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "prompt": "I want to show that the RSVM2 method fails on nonlinear data because of the linear classifier assumption I identified in Task 1.2. What's a good synthetic dataset for this?",
+      "why_asked": "Needed a dataset that would cleanly demonstrate the linear classifier limitation",
+      "usefulness": "medium"
+    },
+    {
+      "prompt": "Help me create a decision boundary visualization showing three models side by side — my RSVM2, linear SVM, and RBF SVM — on the circles dataset",
+      "why_asked": "Wanted a compelling visual comparison of the failure mode",
+      "usefulness": "medium"
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for the corresponding task in Part B.",
+    "understanding_acknowledged": true,
+    "signature": "vaiditya",
+    "date": "2026-03-11"
+  }
+}

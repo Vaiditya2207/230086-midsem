@@ -1,0 +1,77 @@
+{
+  "student_metadata": {
+    "name": "Vaiditya Tanwar",
+    "roll_number": "230086",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "submission_date": "2026-03-11"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Keith (Local AI Agent)",
+      "model": "Claude Opus 4",
+      "provider": "Anthropic (via GitHub Copilot, local execution)"
+    }
+  ],
+  "task": "Task 1.1 — Core Contribution of the Paper",
+  "total_interactions": 3,
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "task_tag": "Task 1.1",
+      "prompt": "Help me understand what Theorem 3.1 in Livni et al. 2012 is actually saying — break down the equivalence between RSVM2(σ) and (ℓ₂)∞SVM(σ) in plain English",
+      "response_summary": "The AI explained that Theorem 3.1 proves that minimizing the expected multiclass hinge loss under stochastic perturbations (RSVM2) is mathematically equivalent to minimizing the hinge loss with an explicit (ℓ₂)∞ regularizer. In other words, if you assume an adversary can randomly perturb each data point within an expected ℓ₂ ball of radius σ, then training against that adversary automatically produces the same solution as adding ℓ₂,∞ norm regularization on the weight matrix W.",
+      "purpose": "Understanding core theorem",
+      "what_it_helped_with": "Clarified that the stochastic adversary framework naturally produces ℓ₂,∞ regularization without manually adding it",
+      "code_used_verbatim": false,
+      "confidence_in_understanding": 4,
+      "verification_method": "Traced through the proof steps in Section 3 myself, following Eq. 6 through 13"
+    },
+    {
+      "interaction_id": 2,
+      "task_tag": "Task 1.1",
+      "prompt": "Help me structure my step-by-step method description in markdown — I want to describe the paper's method from input to output in clear steps with equation references",
+      "response_summary": "The AI provided a skeleton structure with numbered steps and placeholder markdown headings: (1) Problem setup — multiclass classification with W ∈ R^{k×d}, (2) Define stochastic adversary, (3) Formulate RSVM2 objective, (4) Apply Theorem 3.1 to rewrite as (ℓ₂)∞SVM, (5) Optimize via subgradient or CVX.",
+      "purpose": "Structuring markdown explanation",
+      "what_it_helped_with": "Gave me a good skeleton structure to organize my thoughts, I then filled in the actual content from my reading of the paper",
+      "code_used_verbatim": false,
+      "confidence_in_understanding": 3,
+      "verification_method": "Rewrote every step in my own words after understanding the flow"
+    },
+    {
+      "interaction_id": 3,
+      "task_tag": "Task 1.1",
+      "prompt": "What is the geometric meaning of σ in RSVM2? The paper says it's related to perturbation radius but I want to make sure I explain it correctly",
+      "response_summary": "The AI confirmed that σ controls the expected ℓ₂ deviation of the stochastic perturbation from the original point. Geometrically, it defines the size of the uncertainty cloud around each data point. The paper's Section 5 proposes a heuristic where σ is set based on average nearest-neighbor distances, linking it to the local density of the data.",
+      "purpose": "Clarifying σ interpretation",
+      "what_it_helped_with": "Confirmed that σ is the expected ℓ₂ deviation from the original point, and in Section 5 the heuristic relates it to nearest-neighbor distances",
+      "code_used_verbatim": false,
+      "confidence_in_understanding": 5,
+      "verification_method": "Cross-checked with Section 5 experiments paragraph"
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "prompt": "Help me understand what Theorem 3.1 in Livni et al. 2012 is actually saying — break down the equivalence between RSVM2(σ) and (ℓ₂)∞SVM(σ) in plain English",
+      "why_asked": "Needed conceptual clarity on the core result before I could write my explanation",
+      "usefulness": "high"
+    },
+    {
+      "prompt": "Help me structure my step-by-step method description in markdown — I want to describe the paper's method from input to output in clear steps with equation references",
+      "why_asked": "Wanted an organizational template for my writeup, not content",
+      "usefulness": "medium"
+    },
+    {
+      "prompt": "What is the geometric meaning of σ in RSVM2? The paper says it's related to perturbation radius but I want to make sure I explain it correctly",
+      "why_asked": "Wanted to verify my intuition before committing it to the notebook",
+      "usefulness": "medium"
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for the corresponding task in Part B.",
+    "understanding_acknowledged": true,
+    "signature": "vaiditya",
+    "date": "2026-03-11"
+  }
+}

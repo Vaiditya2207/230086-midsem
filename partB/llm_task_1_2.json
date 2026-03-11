@@ -1,0 +1,77 @@
+{
+  "student_metadata": {
+    "name": "Vaiditya Tanwar",
+    "roll_number": "230086",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "submission_date": "2026-03-11"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Keith (Local AI Agent)",
+      "model": "Claude Opus 4",
+      "provider": "Anthropic (via GitHub Copilot, local execution)"
+    }
+  ],
+  "task": "Task 1.2 — Key Assumptions of the Paper",
+  "total_interactions": 3,
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "task_tag": "Task 1.2",
+      "prompt": "What are the specific mathematical assumptions in Livni et al. 2012's RSVM2 framework that are NOT just generic ML assumptions? I need paper-specific ones",
+      "response_summary": "The AI identified several paper-specific assumptions: (1) The perturbation distribution satisfies E[x̃]=x (unbiased noise), (2) A single uniform σ is used for all training points, (3) The classifier family is restricted to linear functions (W·x), and (4) The perturbation is measured in ℓ₂ norm specifically. It distinguished these from generic assumptions like iid data.",
+      "purpose": "Identifying paper-specific assumptions",
+      "what_it_helped_with": "Pointed me toward the E[x̃]=x constraint, the uniform σ, and the linear classifier family. I had already noticed the linearity assumption but hadn't thought about the uniform σ being an assumption",
+      "code_used_verbatim": false,
+      "confidence_in_understanding": 4,
+      "verification_method": "Verified each against Section 2 and the proof of Theorem 3.1"
+    },
+    {
+      "interaction_id": 2,
+      "task_tag": "Task 1.2",
+      "prompt": "Help me write a clear violation scenario for the uniform perturbation budget assumption — when would different points needing different σ values cause problems?",
+      "response_summary": "The AI suggested heteroscedastic noise as a violation scenario — for example, in medical data where measurement noise varies across instruments or patient populations. Points measured with high-precision equipment would need small σ, while noisy measurements need large σ. Using a single σ would either over-regularize precise points or under-regularize noisy ones.",
+      "purpose": "Crafting violation scenario",
+      "what_it_helped_with": "Suggested heteroscedastic noise (medical data example). I adapted this to make it more concrete",
+      "code_used_verbatim": false,
+      "confidence_in_understanding": 4,
+      "verification_method": "Confirmed that Eq. 3 uses a single σ for all i, making this a real structural assumption"
+    },
+    {
+      "interaction_id": 3,
+      "task_tag": "Task 1.2",
+      "prompt": "Can you help me format these assumptions in clean markdown with the headers: Assumption, Why the Method Needs It, Violation Scenario, Paper Reference?",
+      "response_summary": "The AI provided a markdown template with the four requested headers for each assumption, using bold headers and clean spacing. No actual content was filled in — just the structural template.",
+      "purpose": "Formatting markdown cells",
+      "what_it_helped_with": "Got a clean formatting template that I filled with my own content",
+      "code_used_verbatim": false,
+      "confidence_in_understanding": 3,
+      "verification_method": "All content is my understanding, formatting was assisted"
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "prompt": "What are the specific mathematical assumptions in Livni et al. 2012's RSVM2 framework that are NOT just generic ML assumptions? I need paper-specific ones",
+      "why_asked": "Needed to distinguish paper-specific assumptions from generic ones for a thorough analysis",
+      "usefulness": "high"
+    },
+    {
+      "prompt": "Help me write a clear violation scenario for the uniform perturbation budget assumption — when would different points needing different σ values cause problems?",
+      "why_asked": "Had identified the assumption but wanted help thinking through a concrete failure case",
+      "usefulness": "high"
+    },
+    {
+      "prompt": "Can you help me format these assumptions in clean markdown with the headers: Assumption, Why the Method Needs It, Violation Scenario, Paper Reference?",
+      "why_asked": "Purely formatting assistance — content was already written",
+      "usefulness": "low"
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for the corresponding task in Part B.",
+    "understanding_acknowledged": true,
+    "signature": "vaiditya",
+    "date": "2026-03-11"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "student_metadata": {
+    "name": "Vaiditya Tanwar",
+    "roll_number": "230086",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "submission_date": "2026-03-11"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Keith (Local AI Agent)",
+      "model": "Claude Opus 4",
+      "provider": "Anthropic (via GitHub Copilot, local execution)"
+    }
+  ],
+  "task": "Task 2.2 — Reproduction of Paper's Core Method",
+  "total_interactions": 5,
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "task_tag": "Task 2.2",
+      "prompt": "How do I compute the subgradient of the multiclass hinge loss (Eq. 1 in Livni et al.)? I know it involves the argmax class but I want to make sure my implementation is correct",
+      "response_summary": "The AI explained the subgradient computation: for each sample (xi, yi), find ȳ* = argmax_{y≠yi} (w_y · xi - w_{yi} · xi + 1). If the margin is active (i.e., max value > 0), the subgradient w.r.t. W has +xi added to row ȳ* and -xi subtracted from row yi. All other rows get zero gradient from this sample.",
+      "purpose": "Understanding subgradient computation",
+      "what_it_helped_with": "Clarified that for each sample, the subgradient adds xi to the row for ȳ* (worst competing class) and subtracts xi from the row for yi (true class), only when the margin is active (>0)",
+      "code_used_verbatim": false,
+      "confidence_in_understanding": 4,
+      "verification_method": "Derived this myself from the definition of subgradient for max functions, confirmed with the AI's explanation"
+    },
+    {
+      "interaction_id": 2,
+      "task_tag": "Task 2.2",
+      "prompt": "What's the subgradient of max_y ‖wy‖₂ with respect to W? This is the ℓ₂,∞ norm regularizer",
+      "response_summary": "The AI confirmed: let y* = argmax_y ‖wy‖₂. The subgradient of max_y ‖wy‖₂ w.r.t. W is a matrix that is zero everywhere except row y*, where it equals wy*/‖wy*‖₂ (the unit vector in the direction of the longest row). This follows from the chain rule for subdifferentials of max and ℓ₂ norm.",
+      "purpose": "Subgradient of max-norm",
+      "what_it_helped_with": "Confirmed it's σ·wy*/‖wy*‖₂ added to the row for y* = argmax_y ‖wy‖₂, zeros elsewhere",
+      "code_used_verbatim": false,
+      "confidence_in_understanding": 5,
+      "verification_method": "This follows from the subgradient chain rule for max and ℓ₂ norm — I verified by checking that it's in the subdifferential"
+    },
+    {
+      "interaction_id": 3,
+      "task_tag": "Task 2.2",
+      "prompt": "My subgradient descent for the (ℓ₂)∞SVM is not converging well. I'm using a fixed learning rate of 0.01. What step size schedule should I use?",
+      "response_summary": "The AI recommended a diminishing step size schedule: lr_t = lr_0 / sqrt(t+1), which is the standard convergence guarantee for subgradient methods on convex non-smooth functions. It suggested lr_0=0.01 and n_iters=1000 as starting points.",
+      "purpose": "Debugging convergence",
+      "what_it_helped_with": "Suggested diminishing step size lr/sqrt(t+1) which is standard for subgradient methods",
+      "code_used_verbatim": true,
+      "student_modification": "Used the suggested lr/sqrt(t+1) schedule but changed the base learning rate from 0.01 to 0.1 based on my experiments, and set n_iters=2000 instead of the suggested 1000",
+      "confidence_in_understanding": 3,
+      "verification_method": "Confirmed this is the standard result from convex optimization — diminishing step sizes guarantee convergence for subgradient descent"
+    },
+    {
+      "interaction_id": 4,
+      "task_tag": "Task 2.2",
+      "prompt": "Help me implement the σ heuristic from Section 5 of the paper: σ = (1/(n√d)) Σᵢ ‖xi − NN(xi)‖₂",
+      "response_summary": "The AI provided an implementation using scipy.spatial.distance.cdist to compute pairwise distances, find nearest neighbors, and then compute the average nearest-neighbor distance scaled by 1/(n*sqrt(d)).",
+      "purpose": "Implementing σ heuristic",
+      "what_it_helped_with": "Got the implementation structure, adapted to my preferred library",
+      "code_used_verbatim": true,
+      "student_modification": "The AI gave me a version using scipy.spatial.distance. I rewrote it using sklearn NearestNeighbors which I'm more familiar with. The core formula is the same",
+      "confidence_in_understanding": 3,
+      "verification_method": "Verified the formula matches Section 5 exactly"
+    },
+    {
+      "interaction_id": 5,
+      "task_tag": "Task 2.2",
+      "prompt": "Help me write clean markdown annotations for each code block in my reproduction notebook — I need to cite specific equations from the paper",
+      "response_summary": "The AI provided a template for markdown cells that connect code blocks to paper equations, with headers like 'Implementation of Eq. X' and placeholders for explaining what the code does and how it maps to the math.",
+      "purpose": "Writing code-to-paper annotations",
+      "what_it_helped_with": "Got a template for markdown cells connecting code to equations. I filled in the specific references and explanations myself",
+      "code_used_verbatim": false,
+      "confidence_in_understanding": 2,
+      "verification_method": "All equation references verified against the paper"
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "prompt": "How do I compute the subgradient of the multiclass hinge loss (Eq. 1 in Livni et al.)? I know it involves the argmax class but I want to make sure my implementation is correct",
+      "why_asked": "Needed to verify my subgradient derivation before implementing the training loop",
+      "usefulness": "high"
+    },
+    {
+      "prompt": "What's the subgradient of max_y ‖wy‖₂ with respect to W? This is the ℓ₂,∞ norm regularizer",
+      "why_asked": "The ℓ₂,∞ subgradient is non-trivial — wanted confirmation before coding it",
+      "usefulness": "high"
+    },
+    {
+      "prompt": "My subgradient descent for the (ℓ₂)∞SVM is not converging well. I'm using a fixed learning rate of 0.01. What step size schedule should I use?",
+      "why_asked": "Debugging a real convergence issue in my implementation",
+      "usefulness": "high"
+    },
+    {
+      "prompt": "Help me implement the σ heuristic from Section 5 of the paper: σ = (1/(n√d)) Σᵢ ‖xi − NN(xi)‖₂",
+      "why_asked": "Wanted to implement the paper's heuristic correctly rather than guessing σ",
+      "usefulness": "medium"
+    },
+    {
+      "prompt": "Help me write clean markdown annotations for each code block in my reproduction notebook — I need to cite specific equations from the paper",
+      "why_asked": "Wanted well-documented code cells with proper paper references",
+      "usefulness": "low"
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for the corresponding task in Part B.",
+    "understanding_acknowledged": true,
+    "signature": "vaiditya",
+    "date": "2026-03-11"
+  }
+}

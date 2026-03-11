@@ -1,0 +1,78 @@
+{
+  "student_metadata": {
+    "name": "Vaiditya Tanwar",
+    "roll_number": "230086",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "submission_date": "2026-03-11"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Keith (Local AI Agent)",
+      "model": "Claude Opus 4",
+      "provider": "Anthropic (via GitHub Copilot, local execution)"
+    }
+  ],
+  "task": "Task 2.3 — Results Presentation and Reproducibility",
+  "total_interactions": 3,
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "task_tag": "Task 2.3",
+      "prompt": "Help me create a clean confusion matrix visualization using seaborn for my 10-class classification results",
+      "response_summary": "The AI provided a seaborn heatmap code snippet: sns.heatmap(confusion_matrix, annot=True, fmt='d', cmap='viridis') with appropriate figure sizing and axis labels for a 10×10 matrix.",
+      "purpose": "Visualization",
+      "what_it_helped_with": "Got the basic heatmap code, customized it",
+      "code_used_verbatim": true,
+      "student_modification": "Changed the color scheme from default to 'Blues', added percentage annotations, and adjusted figure size",
+      "confidence_in_understanding": 2,
+      "verification_method": "Standard seaborn heatmap — I've used this in lab assignments"
+    },
+    {
+      "interaction_id": 2,
+      "task_tag": "Task 2.3",
+      "prompt": "How should I explain the gap between my results and the paper's results? My (ℓ₂)∞SVM gets ~94% accuracy on digits",
+      "response_summary": "The AI suggested several factors that commonly explain reproduction gaps: (1) different dataset — the paper uses UCI datasets while I used sklearn digits, (2) different optimizer — the paper uses CVX (exact solver) while I used subgradient descent (approximate), (3) different sample sizes and train/test splits, (4) hyperparameter tuning differences.",
+      "purpose": "Gap analysis",
+      "what_it_helped_with": "Suggested focusing on dataset differences, optimization method (subgradient vs CVX), and sample size. I wrote the actual explanation myself",
+      "code_used_verbatim": false,
+      "confidence_in_understanding": 4,
+      "verification_method": "These are genuine reasons — I used different data and simpler optimizer"
+    },
+    {
+      "interaction_id": 3,
+      "task_tag": "Task 2.3",
+      "prompt": "Help me format the reproducibility checklist as a clean markdown table",
+      "response_summary": "The AI provided a markdown table template with columns for checklist items, status (Yes/No/Partial), and notes. Included standard reproducibility items like code availability, data availability, hyperparameter documentation, and random seed reporting.",
+      "purpose": "Formatting checklist",
+      "what_it_helped_with": "Got formatting help for the checklist layout",
+      "code_used_verbatim": false,
+      "confidence_in_understanding": 2,
+      "verification_method": "All checklist items are factually true for my notebooks"
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "prompt": "Help me create a clean confusion matrix visualization using seaborn for my 10-class classification results",
+      "why_asked": "Needed a clean visualization for the 10-class results",
+      "usefulness": "medium"
+    },
+    {
+      "prompt": "How should I explain the gap between my results and the paper's results? My (ℓ₂)∞SVM gets ~94% accuracy on digits",
+      "why_asked": "Wanted to give an honest and technically sound explanation for the reproduction gap",
+      "usefulness": "high"
+    },
+    {
+      "prompt": "Help me format the reproducibility checklist as a clean markdown table",
+      "why_asked": "Formatting assistance only — content was mine",
+      "usefulness": "low"
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for the corresponding task in Part B.",
+    "understanding_acknowledged": true,
+    "signature": "vaiditya",
+    "date": "2026-03-11"
+  }
+}

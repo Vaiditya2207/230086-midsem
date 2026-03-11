@@ -1,0 +1,61 @@
+{
+  "student_metadata": {
+    "name": "Vaiditya Tanwar",
+    "roll_number": "230086",
+    "course": "Advanced Machine Learning",
+    "exam": "Mid-Semester Examination",
+    "part": "Part B",
+    "submission_date": "2026-03-11"
+  },
+  "llm_tools_used": [
+    {
+      "tool_name": "Keith (Local AI Agent)",
+      "model": "Claude Opus 4",
+      "provider": "Anthropic (via GitHub Copilot, local execution)"
+    }
+  ],
+  "task": "Task 2.1 — Dataset Selection and Preprocessing",
+  "total_interactions": 2,
+  "full_llm_interaction_log": [
+    {
+      "interaction_id": 1,
+      "task_tag": "Task 2.1",
+      "prompt": "What sklearn dataset would work well for testing a multiclass SVM method? I need at least 100 samples, 2+ features, and 3+ classes to see the ℓ₂,∞ vs Frobenius difference",
+      "response_summary": "The AI suggested several options: load_digits (1797 samples, 64 features, 10 classes), load_wine (178 samples, 13 features, 3 classes), and load_iris (150 samples, 4 features, 3 classes). It recommended load_digits as the best fit for multiclass SVM testing since it has many classes and enough samples for meaningful train/test splits.",
+      "purpose": "Dataset selection",
+      "what_it_helped_with": "Suggested load_digits (1797 samples, 64 features, 10 classes) which is perfect for multiclass",
+      "code_used_verbatim": false,
+      "confidence_in_understanding": 3,
+      "verification_method": "Checked dataset properties and confirmed it matches the paper's problem setting"
+    },
+    {
+      "interaction_id": 2,
+      "task_tag": "Task 2.1",
+      "prompt": "Help me write clean comments for my data loading and preprocessing code",
+      "response_summary": "The AI suggested inline comments for each preprocessing step: loading with return_X_y, StandardScaler normalization (noting that SVM performance is sensitive to feature scaling), and train_test_split with stratification to maintain class balance.",
+      "purpose": "Code documentation",
+      "what_it_helped_with": "Got cleaner inline comments. I wrote the actual preprocessing code (StandardScaler, train_test_split) myself",
+      "code_used_verbatim": false,
+      "confidence_in_understanding": 2,
+      "verification_method": "Standard sklearn preprocessing — I know how this works from labs"
+    }
+  ],
+  "top_5_prompts": [
+    {
+      "prompt": "What sklearn dataset would work well for testing a multiclass SVM method? I need at least 100 samples, 2+ features, and 3+ classes to see the ℓ₂,∞ vs Frobenius difference",
+      "why_asked": "Needed a dataset that would actually show the difference between regularization approaches",
+      "usefulness": "medium"
+    },
+    {
+      "prompt": "Help me write clean comments for my data loading and preprocessing code",
+      "why_asked": "Wanted readable code with clear documentation of each step",
+      "usefulness": "low"
+    }
+  ],
+  "student_declaration": {
+    "statement": "I declare that this JSON file contains a complete and honest record of my LLM usage for the corresponding task in Part B.",
+    "understanding_acknowledged": true,
+    "signature": "vaiditya",
+    "date": "2026-03-11"
+  }
+}
